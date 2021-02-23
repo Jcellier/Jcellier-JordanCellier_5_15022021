@@ -1,0 +1,17 @@
+$bg-primary: #a69898;
+$bg-secondary: #fcf3f3;
+$bg-tertiary: #302f2f;
+$color-primary: #fcf3f3;
+$btn-bg: #3c76e8;
+
+$font-text: "Roboto", sans-serif;
+$logo-text: "Righteous", sans-serif;
+
+$breakpoints: (
+  // 43em = 688px
+  mobile: 43em,
+  // 62em = 992px
+  tablet: 62em,
+  // 82em = 1312px
+  desktop: 82em
+);

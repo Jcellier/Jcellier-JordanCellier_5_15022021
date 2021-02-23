@@ -1,0 +1,19 @@
+footer {
+  background-color: $bg-secondary;
+  font-family: $font-text;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px 40px;
+  &__copyright {
+    padding-left: 5px;
+  }
+}

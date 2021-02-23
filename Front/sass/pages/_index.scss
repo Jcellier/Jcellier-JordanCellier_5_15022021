@@ -1,0 +1,43 @@
+.main {
+  font-family: $font-text;
+  background-color: $bg-primary;
+  min-height: 50vh;
+  padding-top: 2rem;
+}
+
+.main-welcome {
+  background-color: $bg-tertiary;
+  color: $bg-secondary;
+  max-width: 100%;
+  min-height: 120px;
+  max-height: fit-content;
+  border-radius: 12px;
+  margin: 0px 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  @include phone {
+    width: 50%;
+    margin: 0px 25%;
+  }
+  @include desktop {
+    margin: 0px 30%;
+    width: 40%;
+  }
+  &__title {
+    font-size: 1.4rem;
+    padding: 20px 10px;
+    @include phone {
+      font-size: 2rem;
+      font-weight: lighter;
+    }
+  }
+  &__text {
+    font-size: 1rem;
+    padding: 0px 10px;
+    padding-bottom: 20px;
+  }
+}

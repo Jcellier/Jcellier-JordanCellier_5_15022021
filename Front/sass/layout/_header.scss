@@ -1,0 +1,32 @@
+header {
+  background-color: $bg-secondary;
+  height: 15vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+  margin: 0px 20px;
+  @include phone {
+    margin: 0px 50px;
+  }
+  &-logo {
+    display: flex;
+    font-size: 2rem;
+    justify-content: space-around;
+    &__text {
+      font-family: $logo-text;
+      padding-left: 0.5rem;
+    }
+  }
+  &-cart__cart {
+    font-family: $font-text;
+    font-size: 1.5rem;
+    & a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
