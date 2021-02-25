@@ -1,0 +1,98 @@
+.main-product {
+  background-color: $bg-primary;
+  min-height: 60vh;
+  padding-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-text;
+}
+
+.product {
+  background-color: $bg-secondary;
+  width: 90%;
+  min-height: 0vh;
+  margin-bottom: 5vh;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.8fr 0.3fr 0.2fr 0.2fr 0.1fr 0.4fr 0.2fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Img Img Img Img"
+    "Img Img Img Img"
+    "Name Name Name Name"
+    "Desc Desc Desc Desc"
+    "Price Price Price Price"
+    "Choice Choice Choice Choice"
+    ". Cart Cart .";
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  @include phone {
+    width: 70%;
+  }
+  @include tablet {
+    width: 50%;
+  }
+  & img {
+    grid-area: Img;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px 12px 0px 0px;
+    padding: 5px;
+    @include tablet {
+      height: 400px;
+    }
+  }
+  &__name {
+    grid-area: Name;
+    padding-top: 5px;
+  }
+  &__desc {
+    grid-area: Desc;
+    padding: 0px 30px;
+    margin-bottom: 20px;
+  }
+  &__price {
+    grid-area: Price;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  &__choice {
+    grid-area: Choice;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__lens {
+    width: 30%;
+    height: 40px;
+    font-size: 1rem;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    // position: relative;
+  }
+  & form {
+    grid-area: Cart;
+    margin-bottom: 30px;
+    text-decoration: none;
+  }
+  &__cart {
+    height: 50px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: $btn-bg;
+    color: white;
+    font-size: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+}
+
+#label {
+  margin-bottom: 20px;
+}
