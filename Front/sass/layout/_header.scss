@@ -12,11 +12,13 @@ header {
   @include phone {
     margin: 0px 50px;
   }
-  &-logo {
+  & a {
     display: flex;
     font-size: 2rem;
     justify-content: space-around;
-    &__text {
+    text-decoration: none;
+    color: black;
+    & .header-logo__text {
       font-family: $logo-text;
       padding-left: 0.5rem;
     }
