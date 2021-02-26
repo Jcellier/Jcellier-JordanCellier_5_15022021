@@ -16,3 +16,15 @@ function createElement(tag, className, content, parent, attribute) {
   parent.appendChild(element);
   return element;
 }
+
+// Fonction qui va afficher sur toutes les pages
+// le nombre d'objets dans le panier
+function onLoadCartNumbers() {
+  let productNumbers = localStorage.getItem("cartNumbers");
+  let displayCartNumbers = document.querySelector(".header-cart__cart span");
+  if (productNumbers) {
+    displayCartNumbers.textContent = productNumbers;
+  }
+}
+
+onLoadCartNumbers();

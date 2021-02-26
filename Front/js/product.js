@@ -84,6 +84,31 @@ const getCam = async function (url) {
         formProduct,
         null
       );
+
+      // PARTIE CART IN PROGRESS
+      let cart = document.querySelector(".product__cart");
+
+      cart.addEventListener("click", (e) => {
+        e.preventDefault();
+        cartNumbers();
+      });
+
+      function cartNumbers() {
+        let productNumbers = localStorage.getItem("cartNumbers");
+        let displayCartNumbers = document.querySelector(
+          ".header-cart__cart span"
+        );
+
+        productNumbers = parseInt(productNumbers);
+
+        if (productNumbers) {
+          localStorage.setItem("cartNumbers", productNumbers + 1);
+          displayCartNumbers.textContent = productNumbers + 1;
+        } else {
+          localStorage.setItem("cartNumbers", 1);
+          displayCartNumbers.textContent = 1;
+        }
+      }
     }
   } catch (error) {
     console.log("Erreur : " + error);
