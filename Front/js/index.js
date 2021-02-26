@@ -29,7 +29,7 @@ const getCameras = async function (url) {
           null
         );
         const linkProduct = createElement("a", null, null, cardDiv, {
-          href: "#",
+          href: "./product.html?id=" + camera._id,
         });
         const textLink = createElement(
           "p",

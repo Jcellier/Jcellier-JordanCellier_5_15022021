@@ -67,14 +67,16 @@
     align-items: center;
   }
   &__lens {
-    width: 30%;
+    width: 60%;
     height: 40px;
     font-size: 1rem;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 6px;
     overflow: hidden;
-    // position: relative;
+    @include phone {
+      width: 40%;
+    }
   }
   & form {
     grid-area: Cart;
@@ -93,6 +95,6 @@
   }
 }
 
-#label {
+.label {
   margin-bottom: 20px;
 }
