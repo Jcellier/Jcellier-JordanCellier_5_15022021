@@ -85,12 +85,14 @@ const getCam = async function (url) {
         null
       );
 
-      // PARTIE CART IN PROGRESS
+      // PARTIE CART
       let cart = document.querySelector(".product__cart");
 
       cart.addEventListener("click", (e) => {
         e.preventDefault();
         cartNumbers();
+        totalCost();
+        addBasketItem();
       });
 
       function cartNumbers() {
@@ -107,6 +109,60 @@ const getCam = async function (url) {
         } else {
           localStorage.setItem("cartNumbers", 1);
           displayCartNumbers.textContent = 1;
+        }
+      }
+      // Fonction pour stocker les données du produit dans le localstorage
+      function addBasketItem() {
+        let cameraChosen = {
+          cameraName: camera.name,
+          cameraID: camera._id,
+          //Récup de la value de la lens choisie
+          cameraLens: selectChoice.value,
+          quantity: 1,
+          cameraPrice: camera.price / 100,
+        };
+        let storedCameras = JSON.parse(localStorage.getItem("addCamera"));
+        if (storedCameras === null || storedCameras === undefined) {
+          storedCameras = [];
+        }
+        let cameraLens = selectChoice.value;
+        if (storedCameras) {
+          let line = storedCameras.find(
+            (cameraTmp) =>
+              cameraTmp.cameraID == camera._id &&
+              cameraLens == cameraTmp.cameraLens
+          );
+          console.log(line);
+          if (line === undefined) {
+            storedCameras.push(cameraChosen);
+          } else {
+            line.quantity++;
+          }
+          localStorage.setItem("addCamera", JSON.stringify(storedCameras));
+
+          if (
+            window.confirm(
+              camera.name +
+                " " +
+                cameraLens +
+                " a été ajouté à votre panier ! Souhaitez-vous continuer vos achats ?"
+            )
+          ) {
+            window.location.href = "index.html";
+          } else {
+            window.location.href = "basket.html";
+          }
+        }
+      }
+      // Fonction qui va calculer le cout total du panier
+      function totalCost() {
+        let cartCost = localStorage.getItem("totalCost");
+
+        if (cartCost != null) {
+          cartCost = parseInt(cartCost);
+          localStorage.setItem("totalCost", cartCost + camera.price / 100);
+        } else {
+          localStorage.setItem("totalCost", camera.price / 100);
         }
       }
     }

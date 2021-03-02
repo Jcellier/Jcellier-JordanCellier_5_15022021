@@ -39,13 +39,85 @@
     <!-- Main Section -->
     <main>
       <div class="main">
-        <!-- DISPLAY PANIER VIDE !!!!
-        <div class="main-empty">
+        <!-- DISPLAY PANIER VIDE !!!! -->
+        <!-- <div class="main-empty">
           <h2 class="main-empty__title">Votre panier est vide.</h2>
           <a href="./index.html"
             ><p class="main-empty__text">Retour à l'accueil</p></a
           >
         </div> -->
+        <div class="main-cart">
+          <div class="main-cart-header">
+            <h2 class="main-cart-header__title">Votre panier</h2>
+          </div>
+          <div class="cart-list">
+            <img
+              src="./pexels-markus-spiske-122400.jpg"
+              alt="photo produit"
+              width="100"
+              height="100"
+            />
+            <p class="cart-list__name">Appareil photo 200 vintage</p>
+            <div class="cart-list__quantity">
+              <div class="cart-list__qt">
+                <button>
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span>Quantité : 1</span>
+                <button>
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="cart-list__price">
+                <p>Prix : 99€</p>
+              </div>
+            </div>
+            <div class="cart-list__delete">
+              <button>
+                <span>Supprimer </span> <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+          <div class="cart-list">
+            <img
+              src="./pexels-markus-spiske-122400.jpg"
+              alt="photo produit"
+              width="100"
+              height="100"
+            />
+            <p class="cart-list__name">Appareil photo 200 vintage</p>
+            <div class="cart-list__quantity">
+              <div class="cart-list__qt">
+                <button>
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span>Quantité : 1</span>
+                <button>
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="cart-list__price">
+                <p>Prix : 99€</p>
+              </div>
+            </div>
+
+            <div class="cart-list__delete">
+              <button>
+                <span>Supprimer </span> <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+          <p class="total">Prix total :</p>
+        </div>
+
+        <!-- Display formulaire -->
+        <form class="main-form">
+          <h3>Validez votre commande</h3>
+          <div>
+            <label for=""></label>
+            <input type="text" />
+          </div>
+        </form>
       </div>
     </main>
     <!-- Footer -->
@@ -58,5 +130,6 @@
     <!-- Lien vers les scripts JavaScript -->
     <script src="./js/config.js" defer></script>
     <script src="./js/common.js" defer></script>
+    <script src="./js/basket.js" defer></script>
   </body>
 </html>
