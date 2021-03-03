@@ -1,0 +1,62 @@
+.main-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  min-height: 40vh;
+  margin: 0px 5%;
+  margin-top: 30px;
+  background-color: $bg-secondary;
+  border-radius: 12px;
+  margin-bottom: 50px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  @include tablet {
+    width: 70%;
+    margin: 0px 15%;
+    margin-top: 30px;
+  }
+  & h3 {
+    font-size: 1.5rem;
+    padding: 20px 0px;
+    text-align: center;
+  }
+  &__form {
+    // border: 3px solid brown;
+    display: flex;
+    flex-direction: column;
+    & label {
+      padding: 5px 0px;
+    }
+    & input {
+      height: 25px;
+      padding: 5px;
+      min-width: 230px;
+      @include tablet {
+        min-width: 500px;
+      }
+    }
+    & textarea {
+      height: 25px;
+      padding: 5px;
+      min-width: 230px;
+      width: 60%;
+      @include tablet {
+        min-width: 500px;
+      }
+    }
+  }
+  &__btn {
+    margin: 20px 0px;
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0px;
+    background-color: $btn-bg;
+    color: $color-primary;
+    width: 200px;
+    border-radius: 6px;
+    height: 40px;
+    cursor: pointer;
+  }
+}

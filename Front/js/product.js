@@ -120,6 +120,7 @@ const getCam = async function (url) {
           cameraLens: selectChoice.value,
           quantity: 1,
           cameraPrice: camera.price / 100,
+          cameraImage: camera.imageUrl,
         };
         let storedCameras = JSON.parse(localStorage.getItem("addCamera"));
         if (storedCameras === null || storedCameras === undefined) {
