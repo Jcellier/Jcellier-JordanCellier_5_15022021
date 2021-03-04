@@ -304,6 +304,39 @@ if (storedCameras === null || storedCameras.length === 0) {
     mainForm,
     null
   );
+  // Création fonction validité prénom, nom
+  function validName(value) {
+    // ^[A-Za-zéèàùôêïî_-] == Contient des lettres, caracteres speciaux et -_
+    // {3,15}$ == Doit contenir entre 3 et 15 caracteres
+    return /^[A-Za-zéèàùôêïî_-]{3,15}$/.test(value);
+  }
+
+  // Création fonction validité adresse
+  function validAdresse(value) {
+    // ^[A-Za-zéèàùôêïî_-] == Contient des lettres, caracteres speciaux et -_
+    // {3,15}$ == Doit contenir entre 5 et 80 caracteres
+    return /^[A-Za-z0-9éèàùôêïî\s-]{5,80}$/.test(value);
+  }
+
+  // Création fonction validité code postal
+  function validPostal(value) {
+    // ^[0-9] == Commence par et doit contenir que des chiffres
+    // {5}$ == Doit finir avec 5 caracteres
+    return /^[0-9]{5}$/.test(value);
+  }
+
+  // Création fonction validité email
+  function validEmail(value) {
+    // +@ == séparation avec un @
+    // +\. == séparation avec un .
+    return /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value);
+  }
+
+  // Création fonction validité ville
+  function validVille(value) {
+    return /^[A-Za-zéèàùôêïî_-\s]{3,35}$/.test(value);
+  }
+
   // Prenom
   const formPrenom = createElement(
     "div",
@@ -319,7 +352,16 @@ if (storedCameras === null || storedCameras.length === 0) {
     type: "text",
     name: "prenom",
     required: "true",
+    placeholder: "Jean",
   });
+  // Check prenom
+  prenomInput.addEventListener("change", function (event) {
+    if (validName(prenomInput.value) == false) {
+      alert("Aucun chiffre ou symbole n'est autorisé.");
+      event.preventDefault();
+    }
+  });
+
   // Nom
   const formNom = createElement("div", "main-form__form", null, mainForm, null);
   const NomLabel = createElement("label", null, "Nom", formNom, {
@@ -329,7 +371,17 @@ if (storedCameras === null || storedCameras.length === 0) {
     type: "text",
     name: "nom",
     required: "true",
+    placeholder: "Delarue",
   });
+
+  // Check nom
+  nomInput.addEventListener("change", function (event) {
+    if (validName(nomInput.value) == false) {
+      alert("Aucun chiffre ou symbole n'est autorisé.");
+      event.preventDefault();
+    }
+  });
+
   // Adresse
   const formAdresse = createElement(
     "div",
@@ -345,7 +397,17 @@ if (storedCameras === null || storedCameras.length === 0) {
     type: "text",
     name: "adresse",
     required: "true",
+    placeholder: "30 rue de Napoléon",
   });
+
+  // Check adresse
+  adresseInput.addEventListener("change", function (event) {
+    if (validAdresse(adresseInput.value) == false) {
+      alert("Aucun symbole n'est autorisé.");
+      event.preventDefault();
+    }
+  });
+
   // Code postal
   const formPostal = createElement(
     "div",
@@ -361,7 +423,17 @@ if (storedCameras === null || storedCameras.length === 0) {
     type: "text",
     name: "postal",
     required: "true",
+    placeholder: "72000",
   });
+
+  // Check code postal
+  postalInput.addEventListener("change", function (event) {
+    if (validPostal(postalInput.value) == false) {
+      alert("Aucun symbole ou lettre n'est autorisé.");
+      event.preventDefault();
+    }
+  });
+
   // Ville
   const formVille = createElement(
     "div",
@@ -377,7 +449,17 @@ if (storedCameras === null || storedCameras.length === 0) {
     type: "text",
     name: "ville",
     required: "true",
+    placeholder: "Paris",
   });
+
+  // Check ville
+  villeInput.addEventListener("change", function (event) {
+    if (validVille(villeInput.value) == false) {
+      alert("Aucun symbole ou chiffre n'est autorisé.");
+      event.preventDefault();
+    }
+  });
+
   // E-mail
   const formEmail = createElement(
     "div",
@@ -393,7 +475,19 @@ if (storedCameras === null || storedCameras.length === 0) {
     type: "text",
     name: "email",
     required: "true",
+    placeholder: "Jean.Delarue@gmail.com",
   });
+
+  // Check email
+  emailInput.addEventListener("change", function (event) {
+    if (validEmail(emailInput.value) == false) {
+      alert(
+        "L'adresse mail entrée est incorrecte. Voici un exemple : jean.Delarue@gmail.com"
+      );
+      event.preventDefault();
+    }
+  });
+
   // Submit button
   const submitBtn = createElement(
     "button",
@@ -404,4 +498,71 @@ if (storedCameras === null || storedCameras.length === 0) {
       type: "submit",
     }
   );
+
+  function confirmation(e) {
+    if (
+      validName(prenomInput.value) &&
+      validName(nomInput.value) &&
+      validAdresse(adresseInput.value) &&
+      validVille(villeInput.value) &&
+      validEmail(emailInput.value)
+    ) {
+      e.preventDefault();
+
+      // Création de l'objet contact
+      let contact = {
+        firstName: prenomInput.value,
+        lastName: nomInput,
+        address: adresseInput,
+        postal: postalInput,
+        city: villeInput,
+        email: emailInput,
+      };
+
+      // Création du tableau produit
+      let products = [];
+      for (storedCamera of storedCameras) {
+        let productsId = storedCamera.cameraID;
+        products.push(productsId);
+      }
+
+      // Création d'un objet regroupant les contacts et les produits
+      let send = {
+        contact,
+        products,
+      };
+
+      // Envoi des données au serveur
+      const post = async function (data) {
+        try {
+          let response = await fetch(apiUrl + "order", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          if (response.ok) {
+            let data = await response.json();
+            localStorage.setItem("Order", data.orderId);
+            window.location = "confirmation.html";
+            localStorage.removeItem("addCamera");
+            localStorage.removeItem("totalCost");
+            localStorage.removeItem("cartNumbers");
+          } else {
+            e.preventDefault();
+            console.error("Réponse du serveur : ", response.status);
+            alert("Erreur : " + response.status);
+          }
+        } catch (error) {
+          alert("Erreur : " + error);
+        }
+      };
+      post(send);
+    } else {
+      e.preventDefault();
+      alert("Un des champs ci-dessus n'est pas au bon format.");
+    }
+  }
+  submitBtn.addEventListener("click", confirmation);
 }
