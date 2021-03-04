@@ -545,9 +545,9 @@ if (storedCameras === null || storedCameras.length === 0) {
           if (response.ok) {
             let data = await response.json();
             localStorage.setItem("Order", data.orderId);
-            window.location = "confirmation.html";
+            window.location = "confirm.html";
             localStorage.removeItem("addCamera");
-            localStorage.removeItem("totalCost");
+            // localStorage.removeItem("totalCost");
             localStorage.removeItem("cartNumbers");
           } else {
             e.preventDefault();

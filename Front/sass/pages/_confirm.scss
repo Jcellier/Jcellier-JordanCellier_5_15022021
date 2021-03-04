@@ -1,0 +1,32 @@
+.main-confirm {
+  background-color: $bg-secondary;
+  width: 80%;
+  margin: 30px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  &__header {
+    padding: 20px 0px;
+    font-size: 2rem;
+    text-align: center;
+  }
+  &__orderId {
+    padding: 10px 0px;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  &__orderPrice {
+    padding: 10px 0px;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  &__thanks {
+    padding: 10px 30px;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

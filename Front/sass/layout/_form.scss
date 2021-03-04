@@ -14,7 +14,12 @@
   @include tablet {
     width: 70%;
     margin: 0px 15%;
-    margin-top: 30px;
+    margin-top: 50px;
+  }
+  @include desktop {
+    width: 60%;
+    margin: 0px 20%;
+    margin-top: 50px;
   }
   & h3 {
     font-size: 1.5rem;
